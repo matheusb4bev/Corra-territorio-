@@ -13,8 +13,10 @@ android {
         applicationId = "com.corraterritorio.app"
         minSdk = 21
         targetSdk = 34
-        versionCode = flutterVersionCode.toInt()
-        versionName = flutterVersionName
+
+        // DEFINIDO MANUALMENTE (CORREÇÃO DO ERRO)
+        versionCode = 1
+        versionName = "1.0.0"
 
         ndk {
             abiFilters.add("arm64-v8a")
@@ -27,12 +29,12 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        // aviso de deprecated não quebra build
+        jvmTarget = "17"
     }
 
     buildTypes {
         getByName("release") {
-            // assinatura debug (ok para APK fora da Play Store)
             signingConfig = signingConfigs.getByName("debug")
         }
     }
