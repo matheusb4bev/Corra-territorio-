@@ -10,11 +10,15 @@ android {
     ndkVersion = flutter.ndkVersion
 
     defaultConfig {
-        applicationId = "com.seujogo.territoryrunner"
+        applicationId = "com.corraterritorio.app"
         minSdk = 21
         targetSdk = 34
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        versionCode = flutterVersionCode.toInt()
+        versionName = flutterVersionName
+
+        ndk {
+            abiFilters.add("arm64-v8a")
+        }
     }
 
     compileOptions {
@@ -27,8 +31,8 @@ android {
     }
 
     buildTypes {
-        release {
-            // Assinatura debug (ok para APK no Codemagic)
+        getByName("release") {
+            // assinatura debug (ok para APK fora da Play Store)
             signingConfig = signingConfigs.getByName("debug")
         }
     }
