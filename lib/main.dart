@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -10,13 +9,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Territory Runner'),
+        ),
         body: Center(
-          child: Text(
-            'Territory Runner',
-            style: TextStyle(fontSize: 24),
+          child: ElevatedButton(
+            onPressed: () {
+              debugPrint('Botão clicado');
+            },
+            child: const Text('CLIQUE AQUI'),
           ),
         ),
       ),
